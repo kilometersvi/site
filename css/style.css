@@ -1,11 +1,14 @@
+html{
+    height: 100%;
+}
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size:15px;
     line-height:1.5;
-    font:15px/1.5 Arial, Helvetica, sans-serif;
+    height: calc(100% - 1em);
+    /*font:15px/1.5 Arial, Helvetica, sans-serif;*/
     padding=0;
     margin=0;
-    background-color:#f4f4f4;
     
 }
 /* THREE reqs */
@@ -21,9 +24,21 @@ canvas:active{
 }
 
 /* global */
+iframe {
+    z-index : -9999;
+    position: absolute;
+    top : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+    margin  : 0;
+    padding : 0;
+}
 
 .container{
-    width: 80%;
+    text-align:center;
+    float:center;
+    width: 40%;
     margin:auto;
     overflow:hidden;
 }
@@ -33,125 +48,101 @@ u1{
     padding:0;
 }
 
-.button1{
-    height:38px;
-    background:#e8491d;
-    border:0;
-    padding-left: 20px;
-    padding-right: 20px;
+#spacer{
+    height:40%;
 }
 
-
-/* header */
-
-header{
-    background:#35424a;
-    color:#ffffff;
-    padding-top:30px;
-    min-height:70px;
-    border-bottom:#e8491d 3px solid;
+/* only */
+#only{
+    min-height: 10%;
+    height:50%;
+    background:#35424a00;
+    color:#000000FF;
 }
 
-header a{
-    color:#ffffff;
+#only a{
+    color:#000000;
     text-decoration:none;
     text-transform:lowercase;
     font-size:16px;
 }
 
-header li{
-    float:left;
+#only li{
+    float:center;
     display:inline;
     padding: 0 20px 0 20px;
 }
 
-header #toplogo{
-    float:left;
+#only #toplogo{
+    float:center;
 }
 
-header #toplogo h1{
+#only #toplogo h1{
     margin:0;
 }
 
-header nav{
-    float:right;
+#only nav{
     margin-top:10px;
+    padding-bottom:5px;
+    border-bottom:#000000FF 2px solid;
 }
 
-header .highlight, header .current a{
+.highlight, #only .current a{
     color:#e8491d;
     font-weight:bold;
 }
 
-header a:hover{
-    color:#cccccc;
-    /*font-weight:bold;*/
+#only a:hover{
+    color:#e8491d;
+    font-style: italic;
 }
 
-/* showcase */
+/* contact */
+#contact {
+    width:40%;
+    display: none;
+    height:40%;
+}
 
-#showcase{
-    min-height:400px;
-    /*background:url('../img/showcase.jpg') no-repeat 0 -400px;*/
+a, a:visited {
+  color: #e8491d;
+}
+
+a:hover, a:active, a:focus {
+  color:#c33;
+}
+
+input{
+    width:40%;
+}
+
+input, textarea {
+    padding: 12px 20px;
+    margin 8px 0;
+    border: 0px solid #000000;
+    border-radius: 0px;
+    border-bottom: 1px solid #000000;
+    background-color: #ffffff00;
+}
+
+textarea {
+    resize:none;
+    padding-bottom:25px;
+}
+
+button {
+  background-color: #e8491d;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+footer {
+    bottom:10;
     text-align:center;
-    color:#ffffff;
-}
-
-#showcase h1{
-    margin-top:100px;
-    font-size:55px;
-    margin-bottom:10px;
-}
-
-#showcase p{
-    font-size:20px;
-}
-
-/* blog */
-
-
-#blog{
-    padding:15px;
-    color:#ffffff;
-    background:#35424a
-}
-
-#blog h1{
-    float:left
-}
-
-#blog form{
-    float:right;
-    margin-top:15px;
-}
-
-#blog input[type="email"]{
-    padding:4px;
-    height:25px;
-    width:250px;
-}
-
-/* boxes */
-
-#boxes{
-    margin-top:20px;
-}
-
-#boxes .box{
-    float:left;
-    text-align: center;
-    width:30%;
-    padding:10px;
-}
-
-#boxes .box img{
-    width:90px;
-}
-
-fotter{
-    padding:20px;
-    margin-top:20px;
-    color:#ffffff;
-    background-color:#e8491d;
-    text-align:center;
+    height:10%;
+    float:center;
 }

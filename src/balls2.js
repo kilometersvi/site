@@ -5,22 +5,23 @@ import * as THREE from '../build/three.module.js';
 
 let container;//, stats;
 
-let camera, scene, renderer;
+let camera, scene, renderer, canvas;
 
 let gradient;
 
 
 let current = 0, next = 10, balls = [];
 
-let windowHalfX = window.innerWidth / 2;
-let windowHalfY = window.innerHeight / 2;
+let windowHalfX = window.innerWidth / 2 - 30;
+let windowHalfY = window.innerHeight / 2 - 30;
 
 /**** config ****/
-
+//time
+let t_base = 0.05;
 //radius of balls:
-let radius = 50;
+let radius = 20;
 //balls per frame:
-let max_rate = 0.03;
+let max_rate = 0.06;
 //bounds
 let b = 1000;
 
@@ -107,6 +108,11 @@ function Ball(posx, posy, radius, randomInitVelocity){
 Ball.prototype.getPhysicsAttributes = function() {
     return [this.x, this.y, this.vx, this.vy, this.ax, this.ay]
 }
+Ball.prototype.dispose = function() {
+    this.mesh.geometry.dispose();
+    this.mesh.material.dispose();
+}
+
 
 function init() {
 
@@ -133,9 +139,9 @@ function init() {
     };
     
     //shadow
-    const canvas = document.createElement( 'canvas' );
-    canvas.width = 128;
-    canvas.height = 128;
+    canvas = document.createElement( 'canvas' );
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     const context = canvas.getContext( '2d' );
     
@@ -153,8 +159,8 @@ function init() {
 
 function onWindowResize() {
 
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
+    windowHalfX = window.innerWidth / 2 - 60;
+    windowHalfY = window.innerHeight / 2 - 60;
 
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -175,7 +181,7 @@ function animate() {
         var b = new Ball(Math.random()*windowHalfX*2-windowHalfX, windowHalfY*2.5, radius, 50);
     }
     
-    var t = 0.1;
+    var t = t_base;
     var toPop = []
     for (let i = 0; i < balls.length; i++){
         var x0 = balls[i].x;
@@ -219,7 +225,7 @@ function animate() {
         toPop.sort().reverse();
         for (let i of toPop){
             scene.remove(scene.getObjectByName(balls[i].mesh.name));
-            balls[i].geometry.dispose();
+            balls[i].dispose();
             balls.splice(i,1);
         }
         //toPop.forEach(balls.pop);

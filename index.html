@@ -12,78 +12,123 @@
         <title>welcome</title>
         <meta name="description" content="">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet"> 
         
     </head>
     <body>
-        <style>
-            iframe {
-                z-index : -9999;
-                position: absolute;
-                top : 0;
-                left    : 0;
-                width   : 100%;
-                height  : 100%;
-                margin  : 0;
-                padding : 0;
-            }
-            </style>
-            <iframe src="balls.html"></iframe> 
-        <header>
-            <div class="container">
-                <div id="toplogo">
-                    <h1><span class="highlight">Miles</span>Milosevich</h1>
-                </div>
-                <nav>
-                    <u1>
-                        <li class="current"><a href="index.html">home</a></li>
-                        <li><a href="about.html">about</a></li>
-                        <li><a href="contact.html">contact</a></li>
-                    </u1>
-                </nav> 
+        <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                emailjs.init("user_EMzw8WWrUFDKKETL6Gv9M");
+            })();
+        </script>
+        <iframe src="balls.html"></iframe> 
+        <div id="spacer" class="container"></div>
+        <div id="only" class="container">
+            <div id="toplogo">
+                <h1><span class="highlight">Miles</span> Milosevich</h1>
             </div>
-        </header>
-        
-        <section id="showcase">
-            <div class="container">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
-                <script src="src/main.js"></script>
-                
-            </div>
-        </section>
-        <h1>Sup</h1>
-                <p> stuff </p>
-        <section id="blog">
-            <div class="container">
-                <h1>Subscribe or something</h1>
+            <nav>
+                <u1>
+                    <li><a href="https://github.com/kilometersvi">github</a></li>
+                    <li><a href="Resume_MilesMilosevich.pdf">resume</a></li>
+                    <li><a onclick="toggleContact()">contact</a></li>
+                </u1>
+            </nav> 
+        </div>
+        <div id="contact" class="container">
+            <div id="email">
+                <p id="comment">send me an email. we'll get in touch.</p>
                 <form>
-                    <input type="email" placeholder="Email">
-                    <button type="submit" class="button1">Subscribe</button>
+                    <input id="nameIn" type="text" placeholder="name" maxLength="50">
+                    <br><input id="emailIn" type="email" placeholder="email" maxLength="50">
+                    <br><textarea id="msgIn" rows="5" cols="42" name="msgIn" type="textArea" placeholder="message" maxLength="300"></textarea>
+                    <br><button type="button" class="button1" onclick="sendMessage()">send</button>
                 </form>
             </div>
-        </section>
-        
-        <section id="boxes">
-            <div class="container">
-                <div class="box">
-                    <img src="./img/image1.png">
-                    <h3>HTML5 Markup</h3>
-                    <p>stuff</p>
-                </div>
-                <div class="box">
-                    <img src="./img/image1.png">
-                    <h3>CSS Styling</h3>
-                    <p>stuff</p>
-                </div>
-                <div class="box">
-                    <img src="./img/image1.png">
-                    <h3>Gtaphic Design</h3>
-                    <p>stuff</p>
-                </div>
+            <div id="linkedin">
+                <p>... or just find me on <span class="highlight" ><a href="https://www.linkedin.com/in/miles-milosevich-1b2238123/" style="text-decoration: none">LinkedIn</a></span>.</p>
             </div>
-        </section>
-        
-        <footer>
+        </div>
+        <footer id="footer">
             <p>Miles Milosevich, Copyright &copy; 2020</p>
+            <p>miles@milosevi.ch</p>
         </footer>
+        <script type="text/javascript">
+            function toggleContact(){
+                const comment = document.getElementById("comment");
+                const spacer = document.getElementById("spacer");
+                const only = document.getElementById("only");
+                const contact = document.getElementById("contact");
+                const footer = document.getElementById("footer");
+                
+                //switch to hidden
+                if (contact.style.display == "inline"){
+                    spacer.style.height = "40%";
+                    contact.style.display = "none";
+                    only.style.height = "50%";
+                    footer.style.paddingTop = "0%";
+                
+                //switch to inline
+                } else {
+                    comment.innerHTML = "send me an email. we'll get in touch.";
+                    comment.style.color = "#000000";
+                    spacer.style.height = "30%";
+                    only.style.height = "10%";
+                    contact.style.display = "inline";
+                    footer.style.paddingTop = "9.5%";
+                }
+            }
+            function isEmpty(value) {
+                if (value == null || typeof value == 'undefined' || value.length == 0){
+                    return true;
+                }
+                return false;
+            }
+            function isEmail(email) {
+                let regex = /^[a-zA-Z0-9,!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                return regex.test(String(email).toLowerCase());
+            }
+            function sendMessage(){
+                
+                const comment = document.getElementById("comment");
+                const name = document.getElementById("nameIn").value;
+                const email = document.getElementById("emailIn").value;
+                const msg = document.getElementById("msgIn").value;
+                
+                console.log(isEmpty(name));
+                console.log(isEmpty(email));
+                console.log(isEmpty(msg));
+                
+                if (isEmpty(name) || isEmpty(email) || isEmpty(msg)){
+                    comment.innerHTML = "empty input fields, try again?";
+                    comment.style.color = "#e8491d";
+                    console.error('invalid params');
+                    return;
+                }
+                else if (!isEmail(email)){
+                    comment.innerHTML = "invalid email, try again?";
+                    comment.style.color = "#e8491d";
+                    console.error('invalid params');
+                    return;
+                }
+                var templateParams = {
+                    from_name: name,
+                    message: msg,
+                    reply_to: email
+                }
+                window.emailjs.send("service_g9bk6y9","template_rxpuymm", templateParams).then(res => {
+                    comment.innerHTML = "thanks for reaching out!";
+                    comment.style.color = "#e8491d";
+                    console.log('Email successfully sent!');
+                }).catch(err => {
+                    console.error('There has been an error.  Here some thoughts on the error that occured:', err);
+                    comment.innerHTML = "some weird error occurred... try emailing me at miles@milosevi.ch";
+                    comment.style.color = "#e8491d";
+                })
+                
+            }
+        </script>
     </body>
 </html>
