@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet"> 
         
     </head>
-    <body>
+    <body onresize="onResize();">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
         <script type="text/javascript">
             (function() {
@@ -56,7 +56,53 @@
             <p>miles@milosevi.ch</p>
         </footer>
         <script type="text/javascript">
+            
+            var c_hidden_fs = {
+                spacerHeight: "40%",
+                onlyHeight: "50%",
+                footerPaddingTop: "0%"
+            };
+            var c_shown_fs = {
+                spacerHeight: "30%",
+                onlyHeight: "10%",
+                footerPaddingTop: "9.5%"
+            };
+            var c_hidden_m = {
+                spacerHeight: "30%",
+                onlyHeight: "40%",
+                footerPaddingTop: "0%"
+            };
+            var c_shown_m = {
+                spacerHeight: "20%",
+                onlyHeight: "5%",
+                footerPaddingTop: "9.5%"
+            };
+            var c_hidden = c_hidden_fs;
+            var c_shown = c_shown_fs;
+            
+            onResize();
+            
+            function onResize(){
+                console.log(window.innerHeight+", "+window.innerWidth);
+                var containers = document.getElementsByClassName("container");
+                if (window.innerWidth <= 700) {
+                    console.log("mobile?");
+                    for(let i=0; i < containers.length; i++){
+                        containers.item(i).width = "60%";
+                    }
+                    Object.assign(c_hidden, c_hidden_m);
+                    Object.assign(c_shown, c_shown_m);
+                }else{
+                    for(let i=0; i < containers.length; i++){
+                        containers.item(i).width = "40%";
+                    }
+                    Object.assign(c_hidden, c_hidden_fs);
+                    Object.assign(c_shown, c_shown_fs);
+                }
+            }
+            
             function toggleContact(){
+                
                 const comment = document.getElementById("comment");
                 const spacer = document.getElementById("spacer");
                 const only = document.getElementById("only");
@@ -65,19 +111,19 @@
                 
                 //switch to hidden
                 if (contact.style.display == "inline"){
-                    spacer.style.height = "40%";
+                    spacer.style.height = c_hidden.spacerHeight;
                     contact.style.display = "none";
-                    only.style.height = "50%";
-                    footer.style.paddingTop = "0%";
+                    only.style.height = c_hidden.onlyHeight;
+                    footer.style.paddingTop = c_hidden.footerPaddingTop;
                 
                 //switch to inline
                 } else {
                     comment.innerHTML = "send me an email. we'll get in touch.";
                     comment.style.color = "#000000";
-                    spacer.style.height = "30%";
-                    only.style.height = "10%";
+                    spacer.style.height = c_shown.spacerHeight;
+                    only.style.height = c_shown.onlyHeight;
                     contact.style.display = "inline";
-                    footer.style.paddingTop = "9.5%";
+                    footer.style.paddingTop = c_shown.footerPaddingTop;
                 }
             }
             function isEmpty(value) {
