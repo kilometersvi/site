@@ -64,7 +64,7 @@
             };
             var c_shown_fs = {
                 spacerHeight: "30%",
-                onlyHeight: "12%",
+                onlyHeight: "50px",
                 footerPaddingTop: "9.5%"
             };
             var c_hidden_m = {
@@ -84,16 +84,17 @@
             
             function onResize(isInit){
                 var containers = document.getElementsByClassName("container");
-                if (window.innerWidth <= 700) {
+                //console.log(window.innerWidth);
+                if (window.innerWidth <= 830) {
                     console.log("mobile detected");
                     for(let i=0; i < containers.length; i++){
-                        containers.item(i).width = "100%";
+                        containers.item(i).style["width"] = "50%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
                 }else{
                     for(let i=0; i < containers.length; i++){
-                        containers.item(i).width = "40%";
+                        containers.item(i).style["width"] = "40%";
                     }
                     Object.assign(c_hidden, c_hidden_fs);
                     Object.assign(c_shown, c_shown_fs);
