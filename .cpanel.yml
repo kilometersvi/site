@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/pl94xbsja6em/public_html/
+    - /bin/cp home.html $DEPLOYPATH
+    - /bin/cp css/style.css $DEPLOYPATH/css/
+    - /bin/cp balls.html $DEPLOYPATH
+    - /bin/cp src/* $DEPLOYPATH/src/
+    - /bin/cp -R build/* $DEPLOYPATH/build/
+    - /bin/cp -R node_modules/* $DEPLOYPATH/node_modules/
+    - /bin/cp Resume_MilesMilosevich.pdf $DEPLOYPATH
