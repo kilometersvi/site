@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta name="keywords" content="Miles, Milosevich">
+        <meta name="author" content="Not Miles Milosevich">
+        <title>welcome</title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet"> 
+        
+    </head>
+    <body>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                emailjs.init("user_EMzw8WWrUFDKKETL6Gv9M");
+            })();
+        </script>
+        <iframe src="balls.html"></iframe> 
+        <div id="spacer" class="container"></div>
+        <div id="only" class="container">
+            <div id="toplogo">
+                <h1><span class="highlight">Miles</span> Milosevich</h1>
+            </div>
+            <nav>
+                <u1>
+                    <li><a href="https://github.com/kilometersvi">github</a></li>
+                    <li><a href="Resume_MilesMilosevich.pdf">resume</a></li>
+                    <li><a onclick="toggleContact()">contact</a></li>
+                </u1>
+            </nav> 
+        </div>
+        <div id="contact" class="container">
+            <div id="email">
+                <p id="comment">send me an email. we'll get in touch.</p>
+                <form>
+                    <input id="nameIn" type="text" placeholder="name" maxLength="50">
+                    <br><input id="emailIn" type="email" placeholder="email" maxLength="50">
+                    <br><textarea id="msgIn" rows="5" cols="42" name="msgIn" type="textArea" placeholder="message" maxLength="300"></textarea>
+                    <br><button type="button" class="button1" onclick="sendMessage()">send</button>
+                </form>
+            </div>
+            <div id="linkedin">
+                <p>... or just find me on <span class="highlight" ><a href="https://www.linkedin.com/in/miles-milosevich-1b2238123/" style="text-decoration: none">LinkedIn</a></span>.</p>
+            </div>
+        </div>
+        <footer id="footer">
+            <p>Miles Milosevich, Copyright &copy; 2020</p>
+            <p>miles@milosevi.ch</p>
+        </footer>
+        <script type="text/javascript">
+            function toggleContact(){
+                const comment = document.getElementById("comment");
+                const spacer = document.getElementById("spacer");
+                const only = document.getElementById("only");
+                const contact = document.getElementById("contact");
+                const footer = document.getElementById("footer");
+                
+                //switch to hidden
+                if (contact.style.display == "inline"){
+                    spacer.style.height = "40%";
+                    contact.style.display = "none";
+                    only.style.height = "50%";
+                    footer.style.paddingTop = "0%";
+                
+                //switch to inline
+                } else {
+                    comment.innerHTML = "send me an email. we'll get in touch.";
+                    comment.style.color = "#000000";
+                    spacer.style.height = "30%";
+                    only.style.height = "10%";
+                    contact.style.display = "inline";
+                    footer.style.paddingTop = "9.5%";
+                }
+            }
+            function isEmpty(value) {
+                if (value == null || typeof value == 'undefined' || value.length == 0){
+                    return true;
+                }
+                return false;
+            }
+            function isEmail(email) {
+                let regex = /^[a-zA-Z0-9,!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                return regex.test(String(email).toLowerCase());
+            }
+            function sendMessage(){
+                
+                const comment = document.getElementById("comment");
+                const name = document.getElementById("nameIn").value;
+                const email = document.getElementById("emailIn").value;
+                const msg = document.getElementById("msgIn").value;
+                
+                if (isEmpty(name) || isEmpty(email) || isEmpty(msg)){
+                    comment.innerHTML = "empty input fields, try again?";
+                    comment.style.color = "#e8491d";
+                    console.error('invalid params');
+                    return;
+                }
+                else if (!isEmail(email)){
+                    comment.innerHTML = "invalid email, try again?";
+                    comment.style.color = "#e8491d";
+                    console.error('invalid params');
+                    return;
+                }
+                var templateParams = {
+                    from_name: name,
+                    message: msg,
+                    reply_to: email
+                }
+                window.emailjs.send("service_g9bk6y9","template_rxpuymm", templateParams).then(res => {
+                    comment.innerHTML = "thanks for reaching out!";
+                    comment.style.color = "#e8491d";
+                    console.log('Email successfully sent!');
+                }).catch(err => {
+                    console.error('There has been an error.  Here some thoughts on the error that occured:', err);
+                    comment.innerHTML = "some weird error occurred... try emailing me at miles@milosevi.ch";
+                    comment.style.color = "#e8491d";
+                })
+                
+            }
+        </script>
+    </body>
+</html>
