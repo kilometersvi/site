@@ -40,7 +40,7 @@ iframe {
     float:center;
     width: 50%;
     margin:auto;
-    overflow:hidden;
+    overflow:visible;
 }
 
 u1{
