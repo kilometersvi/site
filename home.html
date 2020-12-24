@@ -74,7 +74,7 @@
             };
             var c_shown_m = {
                 spacerHeight: "2%",
-                onlyHeight: "20%",
+                onlyHeight: "25%",
                 footerPaddingTop: "4.5%"
             };
             var c_hidden = c_hidden_fs;
@@ -83,12 +83,12 @@
             onResize();
             
             function onResize(){
-                console.log(window.innerHeight+", "+window.innerWidth);
+                //console.log(window.innerHeight+", "+window.innerWidth);
                 var containers = document.getElementsByClassName("container");
                 if (window.innerWidth <= 700) {
                     console.log("mobile");
                     for(let i=0; i < containers.length; i++){
-                        containers.item(i).width = "70%";
+                        containers.item(i).width = "90%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
