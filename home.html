@@ -70,12 +70,12 @@
             var c_hidden_m = {
                 spacerHeight: "30%",
                 onlyHeight: "40%",
-                footerPaddingTop: "0%"
+                footerPaddingTop: "8%"
             };
             var c_shown_m = {
                 spacerHeight: "2%",
                 onlyHeight: "30%",
-                footerPaddingTop: "4.5%"
+                footerPaddingTop: "2%"
             };
             var c_hidden = c_hidden_fs;
             var c_shown = c_shown_fs;
@@ -88,7 +88,7 @@
                 if (window.innerWidth <= 700) {
                     console.log("mobile");
                     for(let i=0; i < containers.length; i++){
-                        containers.item(i).width = "95%";
+                        containers.item(i).width = "100%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
