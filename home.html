@@ -27,7 +27,7 @@
         <div id="spacer" class="container"></div>
         <div id="only" class="container">
             <div id="toplogo">
-                <h1><span class="highlight">Miles</span> Milosevich</h1>
+                <h1><span class="highlight">Miles</span> <span id="mobile_min">Milosevich</span></h1>
             </div>
             <nav>
                 <u1>
@@ -69,7 +69,7 @@
             };
             var c_hidden_m = {
                 spacerHeight: "30%",
-                onlyHeight: "40%",
+                onlyHeight: "62%",
                 footerPaddingTop: "8%"
             };
             var c_shown_m = {
@@ -87,12 +87,14 @@
                 var containers = document.getElementsByClassName("container");
                 if (window.innerWidth <= 700) {
                     console.log("mobile");
+                    document.getElementById("mobile_min").style.fontSize = "14px"
                     for(let i=0; i < containers.length; i++){
                         containers.item(i).width = "100%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
                 }else{
+                    document.getElementById("mobile_min").style.fontSize = "16px"
                     for(let i=0; i < containers.length; i++){
                         containers.item(i).width = "40%";
                     }
