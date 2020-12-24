@@ -87,12 +87,14 @@
                 //console.log(window.innerWidth);
                 if (window.innerWidth <= 830) {
                     console.log("mobile detected");
+
                     for(let i=0; i < containers.length; i++){
                         containers.item(i).style["width"] = "50%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
                 }else{
+                    
                     for(let i=0; i < containers.length; i++){
                         containers.item(i).style["width"] = "40%";
                     }
