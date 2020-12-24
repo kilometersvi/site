@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet"> 
         
     </head>
-    <body onresize="onResize();">
+    <body onresize="onResize(false);">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
         <script type="text/javascript">
             (function() {
@@ -58,13 +58,13 @@
         <script type="text/javascript">
             
             var c_hidden_fs = {
-                spacerHeight: "40%",
+                spacerHeight: "35%",
                 onlyHeight: "50%",
                 footerPaddingTop: "0%"
             };
             var c_shown_fs = {
                 spacerHeight: "30%",
-                onlyHeight: "10%",
+                onlyHeight: "12%",
                 footerPaddingTop: "9.5%"
             };
             var c_hidden_m = {
@@ -80,13 +80,12 @@
             var c_hidden = c_hidden_fs;
             var c_shown = c_shown_fs;
             
-            onResize();
+            onResize(true);
             
-            function onResize(){
-                //console.log(window.innerHeight+", "+window.innerWidth);
+            function onResize(isInit){
                 var containers = document.getElementsByClassName("container");
                 if (window.innerWidth <= 700) {
-                    console.log("mobile");
+                    console.log("mobile detected");
                     for(let i=0; i < containers.length; i++){
                         containers.item(i).width = "100%";
                     }
@@ -98,6 +97,11 @@
                     }
                     Object.assign(c_hidden, c_hidden_fs);
                     Object.assign(c_shown, c_shown_fs);
+                }
+                if(isInit){
+                    spacer.style.height = c_hidden.spacerHeight;
+                    only.style.height = c_hidden.onlyHeight;
+                    footer.style.paddingTop = c_hidden.footerPaddingTop;
                 }
             }
             
