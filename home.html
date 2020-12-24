@@ -74,8 +74,8 @@
             };
             var c_shown_m = {
                 spacerHeight: "2%",
-                onlyHeight: "15%",
-                footerPaddingTop: "9.5%"
+                onlyHeight: "20%",
+                footerPaddingTop: "4.5%"
             };
             var c_hidden = c_hidden_fs;
             var c_shown = c_shown_fs;
@@ -86,9 +86,9 @@
                 console.log(window.innerHeight+", "+window.innerWidth);
                 var containers = document.getElementsByClassName("container");
                 if (window.innerWidth <= 700) {
-                    console.log("mobile?");
+                    console.log("mobile");
                     for(let i=0; i < containers.length; i++){
-                        containers.item(i).width = "65%";
+                        containers.item(i).width = "70%";
                     }
                     Object.assign(c_hidden, c_hidden_m);
                     Object.assign(c_shown, c_shown_m);
