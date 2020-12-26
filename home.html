@@ -9,14 +9,14 @@
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <meta name="keywords" content="Miles, Milosevich">
         <meta name="author" content="Not Miles Milosevich">
-        <title>welcome</title>
+        <title>miles</title>
         <meta name="description" content="">
         <link rel="stylesheet" href="css/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet"> 
         
     </head>
-    <body>
+    <body onresize="onResize(false);">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
         <script type="text/javascript">
             (function() {
@@ -56,7 +56,60 @@
             <p>miles@milosevi.ch</p>
         </footer>
         <script type="text/javascript">
+            
+            var c_hidden_fs = {
+                spacerHeight: "35%",
+                onlyHeight: "50%",
+                footerPaddingTop: "0%"
+            };
+            var c_shown_fs = {
+                spacerHeight: "30%",
+                onlyHeight: "50px",
+                footerPaddingTop: "9.5%"
+            };
+            var c_hidden_m = {
+                spacerHeight: "25%",
+                onlyHeight: "62%",
+                footerPaddingTop: "5%"
+            };
+            var c_shown_m = {
+                spacerHeight: "2%",
+                onlyHeight: "30%",
+                footerPaddingTop: "0%"
+            };
+            var c_hidden = c_hidden_fs;
+            var c_shown = c_shown_fs;
+            
+            onResize(true);
+            
+            function onResize(isInit){
+                var containers = document.getElementsByClassName("container");
+                //console.log(window.innerWidth);
+                if (window.innerWidth <= 830) {
+                    console.log("mobile detected");
+
+                    for(let i=0; i < containers.length; i++){
+                        containers.item(i).style["width"] = "50%";
+                    }
+                    Object.assign(c_hidden, c_hidden_m);
+                    Object.assign(c_shown, c_shown_m);
+                }else{
+                    
+                    for(let i=0; i < containers.length; i++){
+                        containers.item(i).style["width"] = "40%";
+                    }
+                    Object.assign(c_hidden, c_hidden_fs);
+                    Object.assign(c_shown, c_shown_fs);
+                }
+                if(isInit){
+                    spacer.style.height = c_hidden.spacerHeight;
+                    only.style.height = c_hidden.onlyHeight;
+                    footer.style.paddingTop = c_hidden.footerPaddingTop;
+                }
+            }
+            
             function toggleContact(){
+                
                 const comment = document.getElementById("comment");
                 const spacer = document.getElementById("spacer");
                 const only = document.getElementById("only");
@@ -65,19 +118,19 @@
                 
                 //switch to hidden
                 if (contact.style.display == "inline"){
-                    spacer.style.height = "40%";
+                    spacer.style.height = c_hidden.spacerHeight;
                     contact.style.display = "none";
-                    only.style.height = "50%";
-                    footer.style.paddingTop = "0%";
+                    only.style.height = c_hidden.onlyHeight;
+                    footer.style.paddingTop = c_hidden.footerPaddingTop;
                 
                 //switch to inline
                 } else {
                     comment.innerHTML = "send me an email. we'll get in touch.";
                     comment.style.color = "#000000";
-                    spacer.style.height = "30%";
-                    only.style.height = "10%";
+                    spacer.style.height = c_shown.spacerHeight;
+                    only.style.height = c_shown.onlyHeight;
                     contact.style.display = "inline";
-                    footer.style.paddingTop = "9.5%";
+                    footer.style.paddingTop = c_shown.footerPaddingTop;
                 }
             }
             function isEmpty(value) {
