@@ -7,11 +7,7 @@ deployment:
     - /bin/cp balls.html $DEPLOYPATH
     - /bin/cp projects.html $DEPLOYPATH
     - /bin/cp src/* $DEPLOYPATH/src/
-    - /bin/cp static/* $DEPLOYPATH/static/
-    - /bin/cp static/imgs/* $DEPLOYPATH/static/imgs/
-    - /bin/cp static/imgs/cyclegan.jpeg $DEPLOYPATH/static/imgs/cyclegan.jpeg
-    - /bin/cp static/imgs/forceseat.png $DEPLOYPATH/static/imgs/forceseat.png
-    - /bin/cp static/imgs/MRIscans.png $DEPLOYPATH/static/imgs/MRIscans.png
+    - /bin/cp -R static/* $DEPLOYPATH/static/
     - /bin/cp -R build/* $DEPLOYPATH/build/
     - /bin/cp -R node_modules/* $DEPLOYPATH/node_modules/
     - /bin/cp Resume_MilesMilosevich.pdf $DEPLOYPATH
