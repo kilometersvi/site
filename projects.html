@@ -25,19 +25,20 @@
         </script>
         <iframe width="100%" height="100%" style="position: fixed;" src="balls.html"></iframe> 
         <div id="spacer" class="container"></div>
-        <div id="only" class="container">
+        <div id="only" class="container-small">
             <div id="toplogo">
-                <h1><span class="highlight">Miles</span> Milosevich</h1>
+                <h1><a style="color: inherit; text-decoration: inherit; font-size: inherit; text-transform: inherit;" href="home.html"><span class="highlight">Miles</span> Milosevich</a></h1>
             </div>
             <nav>
                 <u1>
-                    <li><a href="projects.html">projects</a></li>
+                    <li><a href="home.html">home</a></li>
                     <li><a href="https://github.com/kilometersvi">github</a></li>
                     <li><a href="Resume_MilesMilosevich.pdf">resume</a></li>
                     <li><a onclick="toggleContact()">contact</a></li>
                 </u1>
             </nav> 
         </div>
+        
         <div id="contact" class="container">
             <div id="email">
                 <p id="comment">send me an email. we'll get in touch.</p>
@@ -51,6 +52,26 @@
             <div id="linkedin">
                 <p>... or just find me on <span class="highlight" ><a href="https://www.linkedin.com/in/miles-milosevich-1b2238123/" style="text-decoration: none">LinkedIn</a></span>.</p>
             </div>
+        </div>
+        
+        <div id="portfolio" class="container">
+            <p> check out my projects: </p>
+            <div class="post" id="post3">
+                <p> <span class="highlight">face image translation using CycleGAN</span> 2022 </p>
+                <img class="post_image" src="/static/imgs/cyclegan.jpeg" alt="Cycle GAN Graphic">
+                <p> adjust the features of an image through the application of various "filters", each a pretrained CycleGAN model. for example, add glasses to your photo, or a double chin, or make your lips look a little bigger. trained off of annotated CelebA. live link coming soon. <a href=https://www.youtube.com/watch?v=5jziBapziYE>learn more about CycleGANs</a>.</p>
+            </div>
+            <div class="post" id="post2">
+                <p> <span class="highlight">hormone detection from MRI brain scans using volumetric convolutional model</span> 2021 </p>
+                <img class="post_image" src="/static/imgs/MRIscans.png" alt="MRI scan graphic">
+                <p> predicted the status of a genetic biomarker important for brain cancer treatment through MRI scans of brain tumor patients using volumetric (3D) convolutional model. more info on <a href=https://www.kaggle.com/competitions/rsna-miccai-brain-tumor-radiogenomic-classification>kaggle</a>.</p>
+            </div>
+            <div class="post" id="post1">
+                <p> <span class="highlight">VR driving simulator</span> 2021-2022 </p>
+                <img class="post_image" src="/static/imgs/forceseat.png" alt="Cycle GAN Graphic">
+                <p> developed VR Driving simulator in Unity for use in research projects at Chapman Brain Institute, using ForceSeat SDK for controlling racing chair capable of 6 degrees of motion. </p>
+            </div>
+            
         </div>
         <footer id="footer">
             <p>Miles Milosevich, Copyright &copy; 2022</p>

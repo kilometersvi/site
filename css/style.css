@@ -42,7 +42,26 @@ iframe {
     margin:auto;
     overflow:visible;
 }
+.container-small{
+    text-align:center;
+    float:center;
+    width: 50%;
+    max-height:80px;
+    margin:auto;
+    overflow:visible;
+}
 
+.post{
+    border-bottom-color: #000000;
+    border-bottom-width: 8px;
+    background-color: rgba(239, 238, 224, 0.77);
+    border-radius: 8px 8px 8px 8px;
+}
+.post>img{
+    max-width: 48%;
+    width: 48%;
+    
+}
 u1{
     margin:0;
     padding:0;
